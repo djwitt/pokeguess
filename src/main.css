@@ -20,7 +20,7 @@ body {
     height: var(--image-size);
     background: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png)
         center/contain no-repeat;
-    transition: background-color 2.1s ease-out;
+    transition: 2s ease-out;
 }
 
 .mask {
