@@ -1,0 +1,73 @@
+/* Main CSS file for Pokeguess */
+:root {
+    --image-size: 200px;
+}
+
+body {
+    background: rgba(40, 38, 42);
+}
+
+.container {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pokemon {
+    width: var(--image-size);
+    height: var(--image-size);
+    background: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png)
+        center/contain no-repeat;
+    transition: background-color 2.1s ease-out;
+}
+
+.mask {
+    width: var(--image-size);
+    height: var(--image-size);
+    mask: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png)
+        center/contain no-repeat;
+    background-blend-mode: darken;
+    background-color: rgba(10, 10, 10, 1);
+}
+
+.reveal {
+    background-color: rgba(10, 10, 10, 0);
+}
+
+.mag-top {
+    margin-top: 40px;
+}
+
+button {
+    text-transform: uppercase;
+    background-color: rgba(216, 216, 216, 1);
+    border-radius: 8px;
+    border-width: 0;
+    color: #333333;
+    cursor: pointer;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    margin: 0;
+    padding: 12px 20px;
+    text-align: center;
+    transition: all 200ms;
+    vertical-align: baseline;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+button:hover {
+    background-color: rgba(130, 130, 130, 1);
+    color: rgba(242, 242, 242, 1);
+}
+
+button:active {
+    transform: scale(0.98);
+}
