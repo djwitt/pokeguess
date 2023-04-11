@@ -1,4 +1,4 @@
-const POKEMON = document.querySelector(".pokemon")
+const pokemon = document.querySelector(".pokemon")
 const mask = document.querySelector(".mask")
 const btn = document.querySelector("button")
 const maxPokemon = 1010
@@ -37,7 +37,7 @@ async function getPokemon(pokeID) {
 }
 
 btn.addEventListener("click", () => {
-	POKEMON.classList.add("reveal")
+	pokemon.classList.add("reveal")
 })
 
 document.addEventListener(
