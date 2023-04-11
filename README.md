@@ -16,9 +16,9 @@ Personal project that takes the `Who's that Pokemon` game from the show to the b
 
 - [ ] Think about if I should separate certain properties into separate classes.
 
-
-
 The use of mask-image seems cleaner in this regard. The `mask-size` property cleans up the sizing properties, which is nice.
+
+**QUICK NOTE:** `mask-image` and `background-image` seem to not layer over each other. I need to perform a little bit of an investigation on this.
 
 ```css
 .mask {
