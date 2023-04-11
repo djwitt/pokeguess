@@ -18,18 +18,12 @@ body {
 .pokemon {
     width: var(--image-size);
     height: var(--image-size);
+    filter: brightness(0);
     transition: 1s ease-out;
 }
 
-.mask {
-    width: var(--image-size);
-    height: var(--image-size);
-    background-blend-mode: darken;
-    background-color: rgba(10, 10, 10, 1);
-}
-
 .reveal {
-    background-color: rgba(10, 10, 10, 0);
+    filter: brightness(1);
 }
 
 .mar-top {
