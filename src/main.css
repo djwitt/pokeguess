@@ -18,16 +18,12 @@ body {
 .pokemon {
     width: var(--image-size);
     height: var(--image-size);
-    background: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png)
-        center/contain no-repeat;
     transition: 2s ease-out;
 }
 
 .mask {
     width: var(--image-size);
     height: var(--image-size);
-    mask: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png)
-        center/contain no-repeat;
     background-blend-mode: darken;
     background-color: rgba(10, 10, 10, 1);
 }
