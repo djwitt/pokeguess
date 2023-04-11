@@ -1,35 +1,30 @@
 const pokemon = document.querySelector(".pokemon")
-const mask = document.querySelector(".mask")
 const btn = document.querySelector("button")
+const pokeAPI = "https://pokeapi.co/api/v2/pokemon/"
 const maxPokemon = 1010
-
-const stylesheet = document.styleSheets[0]
-const findPokemon = [...stylesheet.cssRules].find(
-	(rule) => rule.selectorText === ".pokemon"
-)
-const findMask = [...stylesheet.cssRules].find(
-	(rule) => rule.selectorText === ".mask"
-)
+let pokemonName = undefined
 
 function randomPokemonID(size) {
 	return Math.floor(Math.random() * size)
 }
 
-function renderPokemon(URL) {
-	const pokeImage = `url(${URL}) center/contain no-repeat`
-	const maskImage = `url(${URL}) center/contain no-repeat`
-	findPokemon.style.setProperty("background", pokeImage)
-	findMask.style.setProperty("mask", maskImage)
+function renderPokemon(imageURL) {
+	const pokeImage = `url(${imageURL}) center/contain no-repeat`
+	pokemon.style.setProperty("background", pokeImage)
+}
+
+async function fetchPokemon(URL) {
+	const request = await fetch(URL)
+	const json = await request.json()
+	return json
 }
 
 async function getPokemon(pokeID) {
 	try {
-		const response = await fetch(
-			`https://pokeapi.co/api/v2/pokemon/${pokeID}`
-		)
-		const data = await response.json()
-		const pokemonURL = await data.sprites.other["official-artwork"]
+		const pokemon = await fetchPokemon(`${pokeAPI}${pokeID}`)
+		const pokemonURL = await pokemon.sprites.other["official-artwork"]
 			.front_default
+		pokemonName = pokemon.name
 		renderPokemon(pokemonURL)
 	} catch (error) {
 		throw new Error(error)
