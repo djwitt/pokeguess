@@ -1,5 +1,6 @@
 const pokemon = document.querySelector(".pokemon")
-const btn = document.querySelector("button")
+const show = document.querySelector(".show")
+const next = document.querySelector(".next-pokemon")
 const pokeAPI = "https://pokeapi.co/api/v2/pokemon/"
 const maxPokemon = 1010
 let pokemonName = undefined
@@ -31,8 +32,15 @@ async function getPokemon(pokeID) {
 	}
 }
 
-btn.addEventListener("click", () => {
+show.addEventListener("click", () => {
 	pokemon.classList.add("reveal")
+})
+
+next.addEventListener("click", () => {
+	pokemon.classList.remove("reveal")
+	setTimeout(() => {
+		getPokemon(randomPokemonID(maxPokemon))
+	}, 400)
 })
 
 document.addEventListener(
