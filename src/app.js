@@ -1,6 +1,6 @@
 const pokemon = document.querySelector(".pokemon")
-const show = document.querySelector(".show")
-const next = document.querySelector(".next-pokemon")
+const showBtn = document.querySelector(".show")
+const nextBtn = document.querySelector(".next-pokemon")
 const pokeAPI = "https://pokeapi.co/api/v2/pokemon/"
 const showPoke = "opacity(1) brightness(1)"
 const hidePoke = "opacity(1) brightness(0)"
@@ -36,11 +36,11 @@ async function getPokemon(pokeID) {
     renderPokemon(pokemonURL)
 }
 
-show.addEventListener("click", () => {
+showBtn.addEventListener("click", () => {
     pokemon.style.setProperty("filter", showPoke)
 })
 
-next.addEventListener("click", () => {
+nextBtn.addEventListener("click", () => {
     pokemon.style.setProperty("filter", nextPoke)
     setTimeout(() => {
         getPokemon(randomPokemonID(maxPokemon))
