@@ -2,6 +2,9 @@ const pokemon = document.querySelector(".pokemon")
 const show = document.querySelector(".show")
 const next = document.querySelector(".next-pokemon")
 const pokeAPI = "https://pokeapi.co/api/v2/pokemon/"
+const showPoke = "opacity(1) brightness(1)"
+const hidePoke = "opacity(1) brightness(0)"
+const nextPoke = "opacity(0) brightness(0)"
 const maxPokemon = 1010
 let pokemonName = undefined
 
@@ -10,6 +13,7 @@ function randomPokemonID(size) {
 }
 
 function renderPokemon(imageURL) {
+	pokemon.style.setProperty("filter", hidePoke)
 	const pokeImage = `url(${imageURL}) center/contain no-repeat`
 	pokemon.style.setProperty("background", pokeImage)
 }
@@ -33,14 +37,14 @@ async function getPokemon(pokeID) {
 }
 
 show.addEventListener("click", () => {
-	pokemon.classList.add("reveal")
+	pokemon.style.setProperty("filter", showPoke)
 })
 
 next.addEventListener("click", () => {
-	pokemon.classList.remove("reveal")
+	pokemon.style.setProperty("filter", nextPoke)
 	setTimeout(() => {
 		getPokemon(randomPokemonID(maxPokemon))
-	}, 400)
+	}, 700)
 })
 
 document.addEventListener(
