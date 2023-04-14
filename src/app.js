@@ -19,21 +19,21 @@ function renderPokemon(imageURL) {
 }
 
 async function fetchPokemon(URL) {
-    const request = await fetch(URL)
-    const json = await request.json()
-    return json
+    try {
+        const request = await fetch(URL)
+        const json = await request.json()
+        return json
+    } catch (err) {
+        throw new Error(err)
+    }
 }
 
 async function getPokemon(pokeID) {
-    try {
-        const pokemon = await fetchPokemon(`${pokeAPI}${pokeID}`)
-        const pokemonURL = await pokemon.sprites.other["official-artwork"]
-            .front_default
-        pokemonName = pokemon.name
-        renderPokemon(pokemonURL)
-    } catch (error) {
-        throw new Error(error)
-    }
+    const pokemon = await fetchPokemon(`${pokeAPI}${pokeID}`)
+    const pokemonURL = await pokemon.sprites.other["official-artwork"]
+        .front_default
+    pokemonName = pokemon.name
+    renderPokemon(pokemonURL)
 }
 
 show.addEventListener("click", () => {
