@@ -19,7 +19,7 @@ body {
     width: var(--image-size);
     height: var(--image-size);
     filter: brightness(0) opacity(0);
-    transition: 0.6s ease-out;
+    transition: 0.8s ease-out;
 }
 
 .mar-top {

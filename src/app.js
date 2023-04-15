@@ -13,9 +13,11 @@ function randomPokemonID(size) {
 }
 
 function renderPokemon(imageURL) {
-    pokemon.style.setProperty("filter", hidePoke)
     const pokeImage = `url(${imageURL}) center/contain no-repeat`
     pokemon.style.setProperty("background", pokeImage)
+    if (pokemon.style.background) {
+        pokemon.style.setProperty("filter", hidePoke)
+    }
 }
 
 async function fetchPokemon(URL) {
@@ -44,7 +46,7 @@ nextBtn.addEventListener("click", () => {
     pokemon.style.setProperty("filter", nextPoke)
     setTimeout(() => {
         getPokemon(randomPokemonID(maxPokemon))
-    }, 700)
+    }, 900)
 })
 
 document.addEventListener(
