@@ -1,12 +1,38 @@
 const pokemon = document.querySelector(".pokemon")
 const showBtn = document.querySelector(".show")
 const nextBtn = document.querySelector(".next-pokemon")
+const pokeName = document.querySelector(".pokemon-name")
 const pokeAPI = "https://pokeapi.co/api/v2/pokemon/"
-const showPoke = "opacity(1) brightness(1)"
-const hidePoke = "opacity(1) brightness(0)"
-const nextPoke = "opacity(0) brightness(0)"
 const maxPokemon = 1010
-let pokemonName = undefined
+let pokemonName
+
+/**
+ *
+ * @param {string} action Sets the type of string return for css filter
+ * @param {string} text Allows only the opacity to change
+ * @returns {string}
+ */
+function adjustFilter(action, text = undefined) {
+    if (action === "show" && text === "text") {
+        return "opacity(1)"
+    }
+
+    if (action === "next" && text === "text") {
+        return "opacity(0)"
+    }
+
+    if (action === "show") {
+        return "opacity(1) brightness(1)"
+    }
+
+    if (action === "hide") {
+        return "opacity(1) brightness(0)"
+    }
+
+    if (action === "next") {
+        return "opacity(0) brightness(0)"
+    }
+}
 
 function randomPokemonID(size) {
     return Math.floor(Math.random() * size)
@@ -16,7 +42,7 @@ function renderPokemon(imageURL) {
     const pokeImage = `url(${imageURL}) center/contain no-repeat`
     pokemon.style.setProperty("background", pokeImage)
     if (pokemon.style.background) {
-        pokemon.style.setProperty("filter", hidePoke)
+        pokemon.style.setProperty("filter", adjustFilter("hide"))
     }
 }
 
@@ -31,19 +57,22 @@ async function fetchPokemon(URL) {
 }
 
 async function getPokemon(pokeID) {
-    const pokemon = await fetchPokemon(`${pokeAPI}${pokeID}`)
-    const pokemonURL = await pokemon.sprites.other["official-artwork"]
+    const pokemonResponse = await fetchPokemon(`${pokeAPI}${pokeID}`)
+    const pokemonURL = await pokemonResponse?.sprites.other["official-artwork"]
         .front_default
-    pokemonName = pokemon.name
+    pokemonName = pokemonResponse.name
     renderPokemon(pokemonURL)
 }
 
 showBtn.addEventListener("click", () => {
-    pokemon.style.setProperty("filter", showPoke)
+    pokemon.style.setProperty("filter", adjustFilter("show"))
+    pokeName.innerHTML = pokemonName
+    pokeName.style.setProperty("filter", adjustFilter("show", "text"))
 })
 
 nextBtn.addEventListener("click", () => {
-    pokemon.style.setProperty("filter", nextPoke)
+    pokemon.style.setProperty("filter", adjustFilter("next"))
+    pokeName.style.setProperty("filter", adjustFilter("next", "text"))
     setTimeout(() => {
         getPokemon(randomPokemonID(maxPokemon))
     }, 900)
