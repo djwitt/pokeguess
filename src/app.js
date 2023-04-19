@@ -40,9 +40,9 @@ function randomPokemonID(size) {
 
 function renderPokemon(imageURL) {
     const pokeImage = `url(${imageURL}) center/contain no-repeat`
-    pokemon.style.setProperty("background", pokeImage)
+    pokemon.style.background = pokeImage
     if (pokemon.style.background) {
-        pokemon.style.setProperty("filter", adjustFilter("hide"))
+        pokemon.style.filter = adjustFilter("hide")
     }
 }
 
@@ -65,20 +65,20 @@ async function getPokemon(pokeID) {
 }
 
 showBtn.addEventListener("click", () => {
-    pokemon.style.setProperty("filter", adjustFilter("show"))
+    pokemon.style.filter = adjustFilter("show")
     pokeName.innerHTML = pokemonName
-    pokeName.style.setProperty("filter", adjustFilter("show", "text"))
+    pokeName.style.filter = adjustFilter("show", "text")
 })
 
 nextBtn.addEventListener("click", () => {
-    pokemon.style.setProperty("filter", adjustFilter("next"))
-    pokeName.style.setProperty("filter", adjustFilter("next", "text"))
+    pokemon.style.filter = adjustFilter("next")
+    pokeName.style.filter = adjustFilter("next", "text")
     setTimeout(() => {
         getPokemon(randomPokemonID(maxPokemon))
-    }, 900)
+    }, 800)
 })
 
-document.addEventListener(
-    "DOMContentLoaded",
+document.addEventListener("DOMContentLoaded", () => {
+    pokemon.style.setProperty("filter", adjustFilter("next"))
     getPokemon(randomPokemonID(maxPokemon))
-)
+})
