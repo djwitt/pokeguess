@@ -40,7 +40,7 @@ function randomPokemonID(size) {
 
 /**
  *
- * @param {string} imageURL Requires image URL from API
+ * @param {string} imageURL Requires image URL from PokeAPI
  * @returns {void}
  */
 function renderPokemon(imageURL) {
