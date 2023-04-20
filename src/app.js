@@ -4,13 +4,13 @@ const nextBtn = document.querySelector(".next-pokemon")
 const pokeName = document.querySelector(".pokemon-name")
 const pokeAPI = "https://pokeapi.co/api/v2/pokemon/"
 const maxPokemon = 1010
-let pokemonName
+let fullPokemonName
 
 /**
  *
- * @param {string} action Sets the type of string return for css filter
- * @param {string} text Allows only the opacity to change
- * @returns {string}
+ * @param {string} action Sets the type of value return for css `filter`
+ * @param {string} [text=undefined] Utilized to output values for text blocks only.
+ * @returns {string} Value for `filter` property.
  */
 function adjustFilter(action, text = undefined) {
     if (action === "show" && text === "text") {
@@ -38,6 +38,11 @@ function randomPokemonID(size) {
     return Math.floor(Math.random() * size)
 }
 
+/**
+ *
+ * @param {string} imageURL Requires image URL from API
+ * @returns {void}
+ */
 function renderPokemon(imageURL) {
     const pokeImage = `url(${imageURL}) center/contain no-repeat`
     pokemon.style.background = pokeImage
@@ -46,6 +51,11 @@ function renderPokemon(imageURL) {
     }
 }
 
+/**
+ *
+ * @param {string} URL API URL
+ * @returns Object
+ */
 async function fetchPokemon(URL) {
     try {
         const request = await fetch(URL)
@@ -56,17 +66,22 @@ async function fetchPokemon(URL) {
     }
 }
 
+/**
+ *
+ * @param {number} pokeID Accepts a number for grabbing a random pokemon index
+ * @returns {void}
+ */
 async function getPokemon(pokeID) {
     const pokemonResponse = await fetchPokemon(`${pokeAPI}${pokeID}`)
     const pokemonURL = await pokemonResponse?.sprites.other["official-artwork"]
         .front_default
-    pokemonName = pokemonResponse.name
+    fullPokemonName = pokemonResponse.name
     renderPokemon(pokemonURL)
 }
 
 showBtn.addEventListener("click", () => {
     pokemon.style.filter = adjustFilter("show")
-    pokeName.innerHTML = pokemonName
+    pokeName.innerHTML = fullPokemonName
     pokeName.style.filter = adjustFilter("show", "text")
 })
 
