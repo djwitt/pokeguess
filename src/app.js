@@ -81,6 +81,11 @@ async function getPokemon(pokeID) {
     renderPokemon(pokemonURL)
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    pokemon.style.setProperty("filter", adjustFilter("next"))
+    getPokemon(randomPokemonID(maxPokemon))
+})
+
 showBtn.addEventListener("click", () => {
     pokemon.style.filter = adjustFilter("show")
     pokeName.innerHTML = fullPokemonName
@@ -93,9 +98,4 @@ nextBtn.addEventListener("click", () => {
     setTimeout(() => {
         getPokemon(randomPokemonID(maxPokemon))
     }, 800)
-})
-
-document.addEventListener("DOMContentLoaded", () => {
-    pokemon.style.setProperty("filter", adjustFilter("next"))
-    getPokemon(randomPokemonID(maxPokemon))
 })
