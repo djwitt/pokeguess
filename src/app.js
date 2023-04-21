@@ -44,10 +44,12 @@ function randomPokemonID(size) {
  * @returns {void}
  */
 function renderPokemon(imageURL) {
-    const pokeImage = `url(${imageURL}) center/contain no-repeat`
-    pokemon.style.background = pokeImage
+    pokemon.style.background = `url(${imageURL}) center/contain no-repeat`
     if (pokemon.style.background) {
-        pokemon.style.filter = adjustFilter("hide")
+        // Uneducated hack to smooth out transition between when the URL is called to when it is painted.
+        setTimeout(() => {
+            pokemon.style.filter = adjustFilter("hide")
+        }, 200)
     }
 }
 
