@@ -56,7 +56,7 @@ function renderPokemon(imageURL) {
 /**
  *
  * @param {string} URL API URL
- * @returns Object
+ * @returns {Promise}
  */
 async function fetchPokemon(URL) {
     try {
