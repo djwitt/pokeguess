@@ -21,14 +21,14 @@ body {
     width: var(--image-size);
     height: var(--image-size);
     filter: brightness(0) opacity(0);
-    transition: 0.8s ease-out;
+    transition: filter 0.7s ease-out;
 }
 
 .pokemon-name {
     font-family: "PT Sans", sans-serif;
     font-size: 40px;
     filter: opacity(0);
-    transition: 0.8s ease-out;
+    transition: 0.5s ease-out;
 }
 
 .interact {
