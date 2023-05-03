@@ -39,8 +39,8 @@ function randomPokemonID(size) {
 }
 
 function renderPokemon(imageURL) {
-    pokemon.style.filter = adjustFilter("hide");
     pokemon.style.background = `url(${imageURL}) center/contain no-repeat`;
+    pokemon.style.filter = adjustFilter("hide");
 }
 
 async function fetchPokemon(URL) {
