@@ -79,7 +79,6 @@ nextBtn.addEventListener("click", () => {
     pokemon.addEventListener(
         "transitionend",
         (e) => {
-            console.log(e);
             getPokemon(randomPokemonID(maxPokemon));
         },
         { once: true }
