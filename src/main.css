@@ -6,25 +6,24 @@
 }
 
 body {
-    /* background: rgb(230, 230, 230); */
-    height: 100%;
-    margin: 0;
     background: radial-gradient(
         circle,
-        rgb(229, 229, 229) 20%,
+        rgb(245, 245, 250) 20%,
         rgb(127, 127, 127) 100%
     );
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-.container {
-    height: 600px;
+.flex-container {
+    height: 90vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 400px;
+}
+
+.container {
+    text-align: center;
 }
 
 .pokemon {
@@ -35,101 +34,52 @@ body {
 }
 
 .pokemon-name {
+    margin-top: 20px;
     font-family: "PT Sans", sans-serif;
     font-size: 40px;
+    text-transform: uppercase;
     filter: opacity(0);
     transition: 0.5s ease-out;
 }
 
-.interact {
-    margin-top: 20px;
-    text-align: center;
-}
-
 .btn-group {
-    margin-top: 40px;
+    margin-top: 10%;
 }
 
-/* button {
-    text-transform: uppercase;
-    background-color: rgb(62, 62, 62);
-    border-radius: 8px;
-    border-width: 0;
-    color: #dcdcdc;
-    cursor: pointer;
-    font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 20px;
-    margin: 0;
-    padding: 12px 20px;
+.button-59 {
     text-align: center;
-    transition: all 200ms;
-    vertical-align: baseline;
-    white-space: nowrap;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-
-button:hover {
-    background-color: rgba(130, 130, 130, 1);
-    color: rgba(242, 242, 242, 1);
-}
-
-button:active {
-    transform: scale(0.98);
-} */
-
-.reveal {
-    margin: 10px;
-    padding: 15px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
-    background-size: 200% auto;
-    color: white;
-    border-radius: 10px;
-    border: 10px;
-    font-size: 16px;
-    font-weight: 700;
-    box-shadow: 0px 0px 14px -7px #ff00ea;
-    background-image: linear-gradient(
-        45deg,
-        #f64f59 0%,
-        #dc538a 51%,
-        #f64f59 100%
-    );
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-
-.reveal:hover {
-    color: #fff;
-    text-decoration: none;
-}
-
-.reveal:active {
-    transform: scale(0.95);
-}
-
-.next-btn {
-    margin: 10px;
-    padding: 13px 30px;
-    text-align: center;
-    text-transform: uppercase;
-    transition: 0.5s;
     background-color: transparent;
-    color: none;
-    border-radius: 10px;
-    border: dotted 2px;
-    font-size: 16px;
-    font-weight: 700;
-    /* background-image: linear-gradient(45deg, #494949 0%, #8e8e8e 100%); */
+    border: 2px solid #383838;
+    border-radius: 50px;
+    color: #181818;
     cursor: pointer;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    height: 48px;
+    padding: 0 12px;
+    transition: all 0.3s;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+}
+
+.button-59:focus {
+    color: #171e29;
+    transform: scale(4px);
+}
+
+.button-59:hover {
+    color: rgb(231, 231, 231);
+    background-color: #383838;
+}
+
+.button-59:active {
+    transform: scale(4px);
+}
+
+@media (min-width: 768px) {
+    .button-59 {
+        min-width: 170px;
+    }
 }
