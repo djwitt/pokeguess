@@ -43,6 +43,7 @@ function renderPokemon(imageURL) {
     pokemon.style.background = `url(${imageURL}) center/contain no-repeat`;
     pokemon.style.filter = adjustFilter("hide");
     togglePokeball(false);
+    showBtn.disabled = false;
 }
 
 function togglePokeball(loaderState) {
@@ -87,6 +88,8 @@ showBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
     pokeName.style.filter = adjustFilter("next", "text");
     pokemon.style.filter = adjustFilter("next");
+
+    showBtn.disabled = true;
 
     pokemon.addEventListener(
         "transitionstart",
