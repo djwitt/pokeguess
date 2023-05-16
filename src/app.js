@@ -4,8 +4,9 @@ const nextBtn = document.querySelector(".next-pokemon");
 const pokeName = document.querySelector(".pokemon-name");
 const pokeball_loader = document.querySelector(".pokeball");
 const pokeAPI = "https://pokeapi.co/api/v2/pokemon/";
-const maxPokemon = 1010;
+const maxPokemon = 10;
 let fullPokemonName;
+let shownPokemon = new Array();
 
 /**
  *
@@ -36,7 +37,28 @@ function adjustFilter(action, text = undefined) {
 }
 
 function randomPokemonID(size) {
-    return Math.floor(Math.random() * size);
+    /**
+     * It is likely that this will have to be refactored, and other concerns split
+     * into other functions. One important issue is recursion for the last number in the array.
+     */
+    let pokeNum = Math.floor(Math.random() * size);
+
+    if (pokeNum === 0) {
+        pokeNum = 1;
+    }
+
+    if (shownPokemon.length === maxPokemon - 1) {
+        return 132;
+    }
+
+    if (!shownPokemon.includes(pokeNum)) {
+        shownPokemon.push(pokeNum);
+        return pokeNum;
+    }
+
+    if (shownPokemon.includes(pokeNum)) {
+        return randomPokemonID(size);
+    }
 }
 
 function renderPokemon(imageURL) {
@@ -86,6 +108,7 @@ showBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
+    console.log(shownPokemon);
     pokeName.style.filter = adjustFilter("next", "text");
     pokemon.style.filter = adjustFilter("next");
 
