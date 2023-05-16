@@ -2,6 +2,7 @@ const pokemon = document.querySelector(".pokemon");
 const showBtn = document.querySelector(".show");
 const nextBtn = document.querySelector(".next-pokemon");
 const pokeName = document.querySelector(".pokemon-name");
+const pokeball_loader = document.querySelector(".pokeball");
 const pokeAPI = "https://pokeapi.co/api/v2/pokemon/";
 const maxPokemon = 1010;
 let fullPokemonName;
@@ -41,6 +42,17 @@ function randomPokemonID(size) {
 function renderPokemon(imageURL) {
     pokemon.style.background = `url(${imageURL}) center/contain no-repeat`;
     pokemon.style.filter = adjustFilter("hide");
+    togglePokeball(false);
+}
+
+function togglePokeball(loaderState) {
+    if (loaderState) {
+        pokeball_loader.style.filter = adjustFilter("show");
+        pokeball_loader.style.visibility = "visible";
+    } else {
+        pokeball_loader.style.filter = adjustFilter("hide");
+        pokeball_loader.style.visibility = "hidden";
+    }
 }
 
 async function fetchPokemon(URL) {
@@ -75,6 +87,14 @@ showBtn.addEventListener("click", () => {
 nextBtn.addEventListener("click", () => {
     pokeName.style.filter = adjustFilter("next", "text");
     pokemon.style.filter = adjustFilter("next");
+
+    pokemon.addEventListener(
+        "transitionstart",
+        (e) => {
+            togglePokeball(true);
+        },
+        { once: true }
+    );
 
     pokemon.addEventListener(
         "transitionend",
